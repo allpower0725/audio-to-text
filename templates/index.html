@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>即時字幕</title>
+  <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+  <style>
+    body { font-family: sans-serif; background: #111; color: #0f0; font-size: 2em; padding: 20px; }
+  </style>
+</head>
+<body>
+  <h2>🎤 即時字幕：</h2>
+  <div id="subtitle">等待語音...</div>
+
+  <script>
+    const socket = io();
+    socket.on('speech', function (data) {
+      document.getElementById('subtitle').textContent = data.text;
+    });
+  </script>
+</body>
+</html>
